@@ -1,42 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import { useParams } from "react-router-dom";
+import db from "../firebase";
 const Detail = () => {
+  const { id } = useParams();
+  const [movie, setMovie] = useState();
+
+  useEffect(() => {
+    db.collection("movies")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setMovie(doc.data());
+        } else {
+          console.log("smile");
+        }
+      });
+  }, []);
+
   return (
     <Container>
-      <Background>
-        <img
-          src="https://lh3.googleusercontent.com/proxy/o2IS8kp_5b_wMCNZnQLtR6FaBYIy-Bvr6DW4wbV8RuHvpqRRTp-rPP2X64Cy1hPWEj_KbMk50SKc7RLGJ3IldkocstK0Dq86VFyxXu-wDy8axCzJJ4De_3nbzSa18tTrSHqjRg"
-          alt=""
-        />
-      </Background>
-      <ImgTitle>
-        <img src="./images/pixar.png" alt="" />
-      </ImgTitle>
+      {movie && (
+        <>
+          <Background>
+            <img src={movie.backgroundImg} alt="" />
+          </Background>
+          <ImgTitle>
+            <img src={movie.titleImg} alt="" />
+          </ImgTitle>
 
-      <Controls>
-        <PlayButton>
-          <img src="/images/play-icon-black.png" alt="" />
-          <span>PLAY</span>
-        </PlayButton>
-        <TrailerButton>
-          <img src="/images/play-icon-white.png" alt="" />
-          <span>TRAILER</span>
-        </TrailerButton>
-        <AddButton>
-          <span>+</span>
-        </AddButton>
-        <GroupWatchButton>
-          <img src="/images/group-icon.png" alt="" />
-        </GroupWatchButton>
-      </Controls>
+          <Controls>
+            <PlayButton>
+              <img src="/images/play-icon-black.png" alt="" />
+              <span>PLAY</span>
+            </PlayButton>
+            <TrailerButton>
+              <img src="/images/play-icon-white.png" alt="" />
+              <span>TRAILER</span>
+            </TrailerButton>
+            <AddButton>
+              <span>+</span>
+            </AddButton>
+            <GroupWatchButton>
+              <img src="/images/group-icon.png" alt="" />
+            </GroupWatchButton>
+          </Controls>
 
-      <SubTitle>2018 . 7m . Family , Kids , Animation</SubTitle>
-      <Description>
-        A Chinese mom who's sad when her geown son leaves home ges another
-        chance tat motherhood when noe off her dunmolings springs tomlofe. But
-        she finds that nothinf=g stays cute and small forever.
-      </Description>
+          <SubTitle>{movie.subTitle}</SubTitle>
+          <Description>
+          {movie.description}
+          </Description>
+        </>
+      )}
     </Container>
   );
 };
@@ -70,7 +86,7 @@ const ImgTitle = styled.div`
   min-height: 170px;
   width: 35vw;
   min-width: 200px;
-  margin-top :60px;
+  margin-top: 60px;
   img {
     width: 100%auto;
     height: 100%;
@@ -136,5 +152,5 @@ const Description = styled.div`
   font-size: 20px;
   margin-top: 16px;
   color: rgb(249, 249, 249);
-  max-width : 760px
+  max-width: 760px;
 `;
