@@ -1,20 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
+import Viewers from "./Viewers";
 function Home() {
   return (
     <Container>
       <ImgSlider />
+      <Viewers/>
     </Container>
   );
 }
 
 export default Home;
 
-const Container = styled.main`
+const Container = styled.div`
   min-height: calc(100vh);
   padding: 0 calc(3.5vw + 5px);
+  padding-top: 70px;
   position: relative;
+  overflow: hidden;
 
   &:before {
     background: url("/images/home-background.png") center center / cover

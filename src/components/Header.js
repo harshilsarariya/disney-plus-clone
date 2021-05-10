@@ -51,7 +51,7 @@ const Nav = styled.nav`
   align-items: center;
   padding: 0 36px;
   letter-spacing: 16px;
-  z-index: 3;
+  overflow-x : hidden;
 `;
 
 const Logo = styled.a`
@@ -128,23 +128,3 @@ const NavMenu = styled.div`
   }
 `;
 
-const Login = styled.a`
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 8px 16px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  border: 1px solid #f9f9f9;
-  border-radius: 4px;
-  transition: all 0.2s ease 0s;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f9f9f9;
-    color: #000;
-    border-color: transparent;
-  }
-`;
-
-const UserImg = styled.img`
-  height: 100%auto;
-`;
