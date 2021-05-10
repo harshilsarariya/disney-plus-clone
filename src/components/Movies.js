@@ -1,59 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-
+import { selectMovies } from "../features/movie/movieSlice";
+import { useSelector } from "react-redux";
 const Movies = () => {
+  const movies = useSelector(selectMovies);
   return (
     <Container>
       <h4>Recommended For You</h4>
       <Content>
-        <Wrap>
-          <img
-            src="https://rukminim1.flixcart.com/image/416/416/jbgtnrk0/poster/s/a/f/medium-ashd-wall-poster-the-simpsons-homer-simpson-bart-simpson-original-imaek7y5rznmecqj.jpeg?q=70"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://rukminim1.flixcart.com/image/416/416/jbgtnrk0/poster/s/a/f/medium-ashd-wall-poster-the-simpsons-homer-simpson-bart-simpson-original-imaek7y5rznmecqj.jpeg?q=70"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://rukminim1.flixcart.com/image/416/416/jbgtnrk0/poster/s/a/f/medium-ashd-wall-poster-the-simpsons-homer-simpson-bart-simpson-original-imaek7y5rznmecqj.jpeg?q=70"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://rukminim1.flixcart.com/image/416/416/jbgtnrk0/poster/s/a/f/medium-ashd-wall-poster-the-simpsons-homer-simpson-bart-simpson-original-imaek7y5rznmecqj.jpeg?q=70"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://rukminim1.flixcart.com/image/416/416/jbgtnrk0/poster/s/a/f/medium-ashd-wall-poster-the-simpsons-homer-simpson-bart-simpson-original-imaek7y5rznmecqj.jpeg?q=70"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://rukminim1.flixcart.com/image/416/416/jbgtnrk0/poster/s/a/f/medium-ashd-wall-poster-the-simpsons-homer-simpson-bart-simpson-original-imaek7y5rznmecqj.jpeg?q=70"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://rukminim1.flixcart.com/image/416/416/jbgtnrk0/poster/s/a/f/medium-ashd-wall-poster-the-simpsons-homer-simpson-bart-simpson-original-imaek7y5rznmecqj.jpeg?q=70"
-            alt=""
-          />
-        </Wrap>
-        <Wrap>
-          <img
-            src="https://rukminim1.flixcart.com/image/416/416/jbgtnrk0/poster/s/a/f/medium-ashd-wall-poster-the-simpsons-homer-simpson-bart-simpson-original-imaek7y5rznmecqj.jpeg?q=70"
-            alt=""
-          />
-        </Wrap>
+        {movies &&
+          movies.map((movie) => (
+            <Wrap key={movie.id}>
+              <img src={movie.cardImg} />
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );
