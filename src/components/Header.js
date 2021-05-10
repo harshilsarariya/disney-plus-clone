@@ -52,6 +52,7 @@ const Nav = styled.nav`
   padding: 0 36px;
   letter-spacing: 16px;
   overflow-x : hidden;
+  z-index:1;
 `;
 
 const Logo = styled.a`
