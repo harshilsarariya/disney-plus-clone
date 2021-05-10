@@ -13,7 +13,7 @@ const Movies = () => {
           movies.map((movie) => (
             <Wrap key={movie.id}>
               <Link to = {`/detail/${movie.id}`}>
-                <img src={movie.cardImg} />
+                <img src={movie.cardImg} alt=""/>
               </Link>
             </Wrap>
           ))}
